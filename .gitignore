@@ -1,0 +1,4 @@
+.vscode
+some-rest-api
+extras
+#.env - if you're ever going to deploy - uncomment

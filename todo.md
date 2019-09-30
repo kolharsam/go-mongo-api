@@ -1,0 +1,6 @@
+ - make a map for all error messages
+ - use chaining for logs
+ - make API more declarative
+ - perhaps setup a routes map?
+ - refactor source code - follow code style present in mongo.go
+ - improve response functions
