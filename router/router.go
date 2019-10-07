@@ -1,6 +1,7 @@
 package router
 
 import (
+	"some-rest-api/middleware"
 	"some-rest-api/routes"
 
 	"github.com/gorilla/mux"
@@ -10,6 +11,9 @@ var appRouter *mux.Router
 
 func init() {
 	appRouter = mux.NewRouter().StrictSlash(true)
+	appRouter.Use(middleware.RequestLogger)
+	appRouter.Use(middleware.AddContentHeader)
+	appRouter.Use(middleware.AddHeaders)
 }
 
 // GetRouter := Get app Router that was setup
@@ -20,6 +24,9 @@ func GetRouter() *mux.Router {
 // SetupRoutes := Get all the routes set up for the router
 func SetupRoutes() {
 	appRouter.HandleFunc("/", routes.Home).Methods("GET")
-	appRouter.HandleFunc("/movie", routes.AddMovie).Methods("POST")
-	appRouter.HandleFunc("/movie/{id}", routes.GetMovie).Methods("GET")
+	appRouter.HandleFunc("/movie", routes.Add).Methods("POST")
+	appRouter.HandleFunc("/movie/{id}", routes.GetOne).Methods("GET")
+	appRouter.HandleFunc("/movie", routes.Update).Methods("PUT")
+	appRouter.HandleFunc("/movie/{id}", routes.Delete).Methods("DELETE")
+	appRouter.HandleFunc("/movies", routes.GetAll).Methods("GET")
 }

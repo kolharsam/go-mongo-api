@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"some-rest-api/logger"
-	"some-rest-api/mongo"
 	"time"
 )
 
@@ -20,25 +18,22 @@ func Send(w http.ResponseWriter, str string) {
 }
 
 // SendJSON := to send responses
-func SendJSON(w http.ResponseWriter, data mongo.MovieSchema, msgType string) {
+func SendJSON(w http.ResponseWriter, data interface{}, msgType string, msg string) {
 	var resp Response
 	switch msgType {
 	case "success":
 		resp = Response{
 			Success:     true,
-			Error:       "none",
+			Message:     msg,
 			RespondedAt: time.Now(),
 			Data:        data,
 		}
-		logger.Message(("Sucessfully added movie: " + data.ID.String()), "info")
 	case "error":
 		resp = Response{
 			Success:     false,
-			Error:       "There was an error in completing the request",
+			Message:     msg,
 			RespondedAt: time.Now(),
-			Data:        data,
 		}
-		logger.Message(("Couldn't add movie: " + data.ID.String()), "error")
 	}
 	json.NewEncoder(w).Encode(resp)
 }

@@ -1,6 +1,8 @@
 package mongo
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 // MovieSchema := The Schema for the Movie API
 type MovieSchema struct {

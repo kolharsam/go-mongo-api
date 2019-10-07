@@ -12,3 +12,8 @@ func GetID(r *http.Request, param string) (primitive.ObjectID, error) {
 	id := mux.Vars(r)[param]
 	return primitive.ObjectIDFromHex(id)
 }
+
+// GetIDString := the ObjectID in a string format
+func GetIDString(object primitive.ObjectID) string {
+	return object.String()
+}
