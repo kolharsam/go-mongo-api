@@ -2,15 +2,25 @@ package middleware
 
 import (
 	"net/http"
+	"os"
 	"time"
 
+	"github.com/sirupsen/logrus"
 	log "github.com/sirupsen/logrus"
 )
 
 var logger = log.New()
 
 func init() {
-	logger.SetFormatter(&log.JSONFormatter{})
+	logger.SetFormatter(&log.JSONFormatter{
+		PrettyPrint: true,
+	})
+	logger.SetFormatter(&logrus.TextFormatter{
+		ForceColors:   true,
+		FullTimestamp: true,
+	})
+	logger.SetReportCaller(true)
+	logger.Out = os.Stdout
 }
 
 // RequestLogger := middleware logging info of all the requests

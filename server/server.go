@@ -7,8 +7,8 @@ import (
 	"some-rest-api/router"
 )
 
-// FireServer := to start server
-func FireServer() {
+// Start := to start server
+func Start() {
 	port := env.GetEnvVar("SERVER_PORT")
 	appRouter := router.GetRouter()
 	router.SetupRoutes()

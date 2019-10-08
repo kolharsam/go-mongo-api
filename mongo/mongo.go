@@ -109,6 +109,6 @@ func GoMongo() {
 	if connectMongo() {
 		logger.Message("Successfully connected to Mongo", "info")
 	} else {
-		logger.Message("There was a problem", "fatal")
+		logger.Message("There was a problem with mongo", "fatal")
 	}
 }

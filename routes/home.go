@@ -7,5 +7,5 @@ import (
 
 // Home := for route "/"
 func Home(w http.ResponseWriter, r *http.Request) {
-	response.SendJSON(w, nil, "success", "You've hit home!")
+	response.SendText(w, "You've hit home!")
 }

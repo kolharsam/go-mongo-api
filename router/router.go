@@ -1,18 +1,24 @@
 package router
 
 import (
+	"net/http"
 	"some-rest-api/middleware"
 	"some-rest-api/routes"
 
 	"github.com/gorilla/mux"
 )
 
+type Route struct {
+	route        string
+	routeHandler func(w http.ResponseWriter, r *http.Request)
+	method       string
+}
+
 var appRouter *mux.Router
 
 func init() {
 	appRouter = mux.NewRouter().StrictSlash(true)
 	appRouter.Use(middleware.RequestLogger)
-	appRouter.Use(middleware.AddContentHeader)
 	appRouter.Use(middleware.AddHeaders)
 }
 

@@ -2,7 +2,7 @@ package env
 
 import (
 	"os"
-	"some-rest-api/logger"
+	log "some-rest-api/logger"
 
 	"github.com/joho/godotenv"
 )
@@ -10,7 +10,7 @@ import (
 func init() {
 	err := godotenv.Load()
 	if err != nil {
-		logger.Message("No .env file found", "fatal")
+		log.Message("No .env file found", "fatal")
 	}
 }
 
@@ -20,6 +20,6 @@ func GetEnvVar(key string) string {
 	if exists {
 		return value
 	}
-	logger.Message(key+" : that env var was not found", "fatal")
+	log.Message(key+" : that env var was not found", "fatal")
 	return ""
 }

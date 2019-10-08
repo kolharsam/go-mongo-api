@@ -10,8 +10,14 @@ var log = logrus.New()
 
 func setUpLogger() {
 	// perhaps have to set up with fields and organise the logs
-	log.Formatter = new(logrus.JSONFormatter)
-	log.Formatter = new(logrus.TextFormatter)
+	log.SetFormatter(&logrus.JSONFormatter{
+		PrettyPrint: true,
+	})
+	log.SetFormatter(&logrus.TextFormatter{
+		ForceColors:   true,
+		FullTimestamp: true,
+	})
+	log.SetReportCaller(true)
 	log.Out = os.Stdout
 }
 

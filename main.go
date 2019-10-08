@@ -12,7 +12,7 @@ func init() {
 
 func main() {
 	if mongo.IsLive() {
-		server.FireServer()
+		server.Start()
 	} else {
 		logger.Message("The API couldn't be setup.", "fatal")
 	}

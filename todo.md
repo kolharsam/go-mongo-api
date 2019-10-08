@@ -3,9 +3,8 @@
  - make API more declarative
  - setup a routes map?
  - refactor source code - follow code style present in mongo.go
- - improve response functions
  - use interfaces
  - share dependencies?
- - response JSON's -> perhaps split into 2 separate functions for success and failure
  - better abstraction for mapping the routes
  - stop printing logs to console -> write to file(s)
+ - add createdAt field
